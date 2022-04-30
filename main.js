@@ -2,26 +2,26 @@ const boardBorder = "black"
 const boardBackground = "white"
 const snake_col = "gold"
 const snake_border = "black"
-
+//Snake location
 let snake = 
 [
     {x: 200, y: 200}, 
 ];
-
+//Variables
 let score =0;
 let changing_direction = false;
 let targetX;
 let targetY;
 let dx = 10;
 let dy = 0;
-
+//Working game area
 const gameBoard = document.querySelector(".game-window");
 const gameBoard_ctx = gameBoard.getContext("2d");
-
+//game mechanism - functions
 main(); 
 genTarget();
 document.addEventListener("keydown", change_direction)
-
+// start and looping game
 function main(){ 
     if (end_game()) return alert("Game over");
     changing_direction=false;
@@ -35,7 +35,7 @@ function main(){
     }, 100)
     
 }
-
+//Drawing a Snake Board, Snake body and Target
 function clearSnakeBoard() {
     gameBoard_ctx.fillStyle = boardBackground;
     gameBoard_ctx.strokeStyle = boardBorder;
@@ -64,7 +64,7 @@ function drawParts(snakePart)
     gameBoard_ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
     gameBoard_ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
 }
-
+// Game over
 function end_game() 
     {
         for (let i=4; i < snake.length; i++)
@@ -146,15 +146,3 @@ function move_body() {
         snake.pop();
     }
 }
-
-/*const startGameButton = document.querySelector(".game-start")
-startGameButton.addEventListener('click', () => {
-    document.getElementById('score').style.display = "inline";
-    document.querySelector(".game-window").style.display = "grid";
-})*/
-
-
-
-
-
-// 4. Incorporating food and score
